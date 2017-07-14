@@ -1,0 +1,32 @@
+{
+    "name": "phpgraduate/satoriPHPSDK",
+    "type": "library",
+    "description": "Satori PHP SDK",
+    "keywords": ["Satori", "PHP SDK"],
+    "homepage": "https://github.com/phpgraduate/satoriPHPSDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavan Gudhe",
+            "email": "pavangudhe@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "react/socket": "0.4.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4",
+        "cboden/ratchet": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SatoriPHPSDK\\": "src/SatoriPHPSDK"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SatoriPHPSDK\\Tests\\": ["tests/SatoriPHPSDK/Tests", "tests/SatoriPHPSDK/Tests/_includes"]
+        }
+    }
+}

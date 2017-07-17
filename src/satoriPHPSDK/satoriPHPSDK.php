@@ -245,42 +245,6 @@ class satoriPHPSDK extends EventEmitter
     }
 
     /**
-     * @param string $topicUri
-     */
-    public function unsubscribe($topicUri)
-    {
-        $this->sendData(array(
-            self::TYPE_ID_UNSUBSCRIBE,
-            $topicUri
-        ));
-    }
-
-    
-    /**
-     * @param $data
-     * @param $header
-     */
-    private function receiveData($data)
-    {
-        if (!$this->isConnected()) {
-            $this->disconnect();
-            return;
-        }
-		$arrContent = json_decode($data, true);
-                
-		if (!empty($arrContent)) {
-			switch ($arrContent['id']) {
-				case self::TYPE_ID_SUBSCRIBE:
-					$this->onSubscribe($data);
-					break;
-            }
-        }
-    }
-
-    function onSubscribe($data) {
-    	echo $data;
-    }
-    /**
      * @param $data
      * @param string $type
      * @param bool $masked
@@ -291,7 +255,7 @@ class satoriPHPSDK extends EventEmitter
             $this->disconnect();
             return;
         }
-        echo "Send: " . json_encode($data) . "\r\n";
+        //echo "Send: " . json_encode($data) . "\r\n";
         $this->getSocket()->write($this->hybi10Encode(json_encode($data)));
     }
     
@@ -319,11 +283,9 @@ class satoriPHPSDK extends EventEmitter
             "cache-control: no-cache\r\n" .
             "Upgrade: websocket" . "\r\n" .
             "Connection: Upgrade" . "\r\n" .
-            //"Sec-WebSocket-Protocol: wamp" . "\r\n" .
             "Sec-WebSocket-Version: 13" . "\r\n" . "\r\n";
     }
 
-    
 
     /**
      * Generate token

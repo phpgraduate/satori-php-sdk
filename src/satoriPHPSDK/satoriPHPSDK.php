@@ -5,7 +5,7 @@ use Evenement\EventEmitter;
 use React\EventLoop\LoopInterface;
 use React\Socket\Connection;
 
-class rtm extends EventEmitter
+class satoriPHPSDK extends EventEmitter
 {
     const TOKEN_LENGHT = 16;
     const TYPE_ID_SUBSCRIBE = 3;

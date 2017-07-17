@@ -260,7 +260,7 @@ class satoriPHPSDK extends EventEmitter
     }
     
     /**
-     * Create header for websocket client
+     * Create header
      *
      * @return string
      */

@@ -72,12 +72,8 @@ class satoriPHPSDK extends EventEmitter
     private $authenticated = false;
 
     /**
-     * 
+     * @param array $config
      * @param LoopInterface $loop
-     * @param string $host
-     * @param int $port
-     * @param string $path
-     * @param null|string $origin
      */
     public function __construct($config, LoopInterface $loop)
     {
@@ -142,10 +138,10 @@ class satoriPHPSDK extends EventEmitter
     }
     
     /**
-     * Parse raw incoming data
+     * Check Connection
      *
      * @param $header
-     * @return array
+     * @return bool
      */
     private function checkConnection($header)
     {    	
@@ -177,7 +173,7 @@ class satoriPHPSDK extends EventEmitter
     
     /**
      * Authenticate request
-     *
+     * @param $response
      */
     private function authenticate($response) {
     	
@@ -228,20 +224,20 @@ class satoriPHPSDK extends EventEmitter
     }
 
     /**
-     * @param string $topicUri
-     * @param string $event
+     * @param string $channel
+     * @param string $message
      */
-    public function publish($topicUri, $event)
+    public function publish($channel, $message)
     {
-        $this->sendData(array("action"=>"rtm/publish","body"=>array("channel"=>$topicUri,"message"=>$event),"id"=>self::TYPE_ID_PUBLISH));        
+        $this->sendData(array("action"=>"rtm/publish","body"=>array("channel"=>$channel,"message"=>$message),"id"=>self::TYPE_ID_PUBLISH));        
     }
 
     /**
-     * @param string $topicUri
+     * @param string $channel
      */
-    public function subscribe($topicUri)
+    public function subscribe($channel)
     {
-    	$this->sendData(array("action"=>"rtm/subscribe","body"=>array("channel"=>$topicUri,"fast_forward"=>true),"id"=>self::TYPE_ID_SUBSCRIBE));    	
+    	$this->sendData(array("action"=>"rtm/subscribe","body"=>array("channel"=>$channel,"fast_forward"=>true),"id"=>self::TYPE_ID_SUBSCRIBE));    	
     }
 
     /**
@@ -469,7 +465,6 @@ class satoriPHPSDK extends EventEmitter
     {
         return $this->path;
     }
-
     
     /**
      * @param LoopInterface $loop

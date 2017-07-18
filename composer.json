@@ -1,9 +1,9 @@
 {
-    "name": "phpgraduate/satoriPHPSDK",
+    "name": "phpgraduate/satori-php-sdk",
     "type": "library",
     "description": "Satori PHP SDK",
     "keywords": ["Satori", "PHP SDK"],
-    "homepage": "https://github.com/phpgraduate/satoriPHPSDK",
+    "homepage": "https://github.com/phpgraduate/satori-php-sdk",
     "license": "MIT",
     "authors": [
         {
